@@ -4,15 +4,15 @@ cache: bundler
 rvm:
   - ruby-head
   - 2.4.0
-  - 2.3.1
-  - 2.2.5
+  - 2.3.3
+  - 2.2.6
   - 2.1.9
   - 2.0.0
-  - 1.9.3
-  - jruby-9.1.2.0
-  - jruby-head
 
 matrix:
   allow_failures:
     - rvm: ruby-head
-    - rvm: jruby-head
+
+addons:
+  code_climate:
+    repo_token: 112ef7c8905dedaef4ada5ace9bd25e4f30f1aa5bbcb54a0ec9d4f13d20b981f

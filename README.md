@@ -5,7 +5,7 @@
 
 Check the presence of a string in a blacklist of the top 100,000 commonly used passwords (sourced from Mark Burnett's [ten million password release](https://xato.net/today-i-am-releasing-ten-million-passwords-b6278bbe7495)).
 
-This very simple Ruby library that can be integrated into your registration/authentication system to prevent users from setting commonly used (and easy to guess) passwords.
+This very simple Ruby library can be integrated into your registration/authentication system to prevent users from setting commonly used (and easy to guess) passwords.
 
 This gem has an insignificant memory footprint with an execution cost of approximately 1 ms. A memory persistence option is available to further reduce execution time.
 
@@ -57,7 +57,7 @@ tester.test("AccurateUnicornCoalPaperclip")
 
 ## Supported Ruby versions
 
-password_blacklist supports MRI Ruby 1.9+ and the JRuby equivalent. The specific Ruby versions we build and test on can be found at [TravisCI](https://travis-ci.org/gchan/password_blacklist).
+password_blacklist supports MRI Ruby 2.x. The specific Ruby versions we build and test on can be found at [TravisCI](https://travis-ci.org/gchan/password_blacklist).
 
 ## Development
 
