@@ -1,26 +1,26 @@
 #!/usr/bin/env ruby
 
-require "bundler/setup"
-require "password_blacklist"
+require 'bundler/setup'
+require 'password_blacklist'
 require 'benchmark/ips'
 
 Benchmark.ips do |x|
   x.warmup = 2
   x.time = 5
 
-  x.report("file read") do |times|
+  x.report('file read') do |times|
     i = 0
     while i < times
-      PasswordBlacklist.test("AccurateUnicornCoalPaperclip")
+      PasswordBlacklist.test('AccurateUnicornCoalPaperclip')
       i += 1
     end
   end
 
-  x.report("in memory") do |times|
+  x.report('in memory') do |times|
     tester = PasswordBlacklist::Tester.new
     i = 0
     while i < times
-      tester.test("AccurateUnicornCoalPaperclip")
+      tester.test('AccurateUnicornCoalPaperclip')
       i += 1
     end
   end
@@ -34,25 +34,25 @@ Benchmark.ips do |x|
   x.warmup = 2
   x.time = 5
 
-  file_path = File.expand_path("../../data/100k_passwords.txt", __FILE__)
+  file_path = File.expand_path('../../data/100k_passwords.txt', __FILE__)
   blacklist = File.read(file_path)
 
-  x.report("match") do
-    blacklist.match "AccurateUnicornCoalPaperclip"
+  x.report('match') do
+    blacklist.match 'AccurateUnicornCoalPaperclip'
   end
 
-  if "".respond_to?(:match?)
-    x.report("match?") do
-      blacklist.match? "AccurateUnicornCoalPaperclip"
+  if ''.respond_to?(:match?)
+    x.report('match?') do
+      blacklist.match? 'AccurateUnicornCoalPaperclip'
     end
   end
 
-  x.report("===") do
-    Regexp.new("AccurateUnicornCoalPaperclip") === blacklist
+  x.report('===') do
+    Regexp.new('AccurateUnicornCoalPaperclip') === blacklist
   end
 
-  x.report("include?") do
-    blacklist.include? "AccurateUnicornCoalPaperclip"
+  x.report('include?') do
+    blacklist.include? 'AccurateUnicornCoalPaperclip'
   end
 
   x.compare!

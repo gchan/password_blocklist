@@ -1,8 +1,8 @@
-require "password_blacklist/version"
-require "password_blacklist/tester"
+require 'password_blacklist/version'
+require 'password_blacklist/tester'
 
 module PasswordBlacklist
-  extend self
+  module_function
 
   def test(password)
     Tester.new.test(password)
