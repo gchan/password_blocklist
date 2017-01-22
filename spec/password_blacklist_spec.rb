@@ -5,13 +5,13 @@ describe PasswordBlacklist do
     expect(PasswordBlacklist::VERSION).not_to be nil
   end
 
-  describe '.test' do
-    it 'delegates to PasswordBlacklist::Tester' do
-      spy = spy('PasswordBlacklist::Tester')
-      expect(PasswordBlacklist::Tester).to receive(:new).and_return(spy)
+  describe '.blacklisted?' do
+    it 'delegates to PasswordBlacklist::Checker' do
+      spy = spy('PasswordBlacklist::Checker')
+      expect(PasswordBlacklist::Checker).to receive(:new).and_return(spy)
 
-      PasswordBlacklist.test('pokemon')
-      expect(spy).to have_received(:test).with('pokemon')
+      PasswordBlacklist.blacklisted?('pokemon')
+      expect(spy).to have_received(:blacklisted?).with('pokemon')
     end
   end
 end

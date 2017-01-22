@@ -1,12 +1,12 @@
 module PasswordBlacklist
-  class Tester
+  class Checker
     def initialize
       file_path = File.expand_path('../../../data/100k_passwords.txt', __FILE__)
 
       @data = File.read(file_path)
     end
 
-    def test(password)
+    def blacklisted?(password)
       !@data.match(/#{password}/).nil?
     end
 

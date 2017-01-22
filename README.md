@@ -31,27 +31,27 @@ Or install it yourself:
 $ irb
 require 'password_blacklist'
 
-PasswordBlacklist.test("pokemon")
+PasswordBlacklist.blacklisted?("pokemon")
 => true
 
-PasswordBlacklist.test("AccurateUnicornCoalPaperclip")
+PasswordBlacklist.blacklisted?("AccurateUnicornCoalPaperclip")
 => false
 ```
 
 ### Test multiple passwords
 
-The blacklist file is loaded on every call to `PasswordBlacklist.test`. Use `PasswordBlacklist::Tester` to persist the blacklist in memory (approximately 0.8MB) if you would like to perform lots of password tests in quick succession.
+The blacklist file is loaded on every call to `PasswordBlacklist.blacklisted?`. Use `PasswordBlacklist::Checker` to persist the blacklist in memory (approximately 0.8MB) if you would like to perform lots of password tests in quick succession.
 
 ```ruby
 require 'password_blacklist'
 
-tester = PasswordBlacklist::Tester.new
-=> #<PasswordBlacklist::Tester:0x3ff979c41758>
+checker = PasswordBlacklist::Checker.new
+=> #<PasswordBlacklist::Checker:0x3ff979c41758>
 
-tester.test("pokemon")
+checker.blacklisted?("pokemon")
 => true
 
-tester.test("AccurateUnicornCoalPaperclip")
+checker.blacklisted?("AccurateUnicornCoalPaperclip")
 => false
 ```
 

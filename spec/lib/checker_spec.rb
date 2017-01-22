@@ -1,15 +1,15 @@
 require 'spec_helper'
 
-describe PasswordBlacklist::Tester do
-  subject { PasswordBlacklist::Tester.new }
+describe PasswordBlacklist::Checker do
+  subject { PasswordBlacklist::Checker.new }
 
-  describe '#test' do
+  describe '#blacklisted?' do
     it 'returns true if the provided password blacklisted' do
-      expect(subject.test('pokemon')).to eq(true)
+      expect(subject.blacklisted?('pokemon')).to eq(true)
     end
 
     it 'returns false if the provided password is not blacklisted' do
-      expect(subject.test('gengar')).to eq(false)
+      expect(subject.blacklisted?('gengar')).to eq(false)
     end
   end
 
