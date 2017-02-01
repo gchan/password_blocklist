@@ -1,4 +1,4 @@
-Unreleased
+0.1.0 / 2017-02-01
 ------
 Rename `test` methods to `blacklisted?`.
 Rename `PasswordBlacklist::Tester` to `PasswordBlacklist::Checker`.
