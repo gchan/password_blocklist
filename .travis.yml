@@ -18,3 +18,6 @@ matrix:
 addons:
   code_climate:
     repo_token: 112ef7c8905dedaef4ada5ace9bd25e4f30f1aa5bbcb54a0ec9d4f13d20b981f
+
+after_success:
+  - bundle exec codeclimate-test-reporter
