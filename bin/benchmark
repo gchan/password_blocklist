@@ -11,16 +11,16 @@ Benchmark.ips do |x|
   x.report('file read') do |times|
     i = 0
     while i < times
-      PasswordBlacklist.test('AccurateUnicornCoalPaperclip')
+      PasswordBlacklist.blacklisted?('AccurateUnicornCoalPaperclip')
       i += 1
     end
   end
 
   x.report('in memory') do |times|
-    tester = PasswordBlacklist::Tester.new
+    tester = PasswordBlacklist::Checker.new
     i = 0
     while i < times
-      tester.test('AccurateUnicornCoalPaperclip')
+      tester.blacklisted?('AccurateUnicornCoalPaperclip')
       i += 1
     end
   end
@@ -38,21 +38,21 @@ Benchmark.ips do |x|
   blacklist = File.read(file_path)
 
   x.report('match') do
-    blacklist.match 'AccurateUnicornCoalPaperclip'
+    blacklist.match Regexp.escape('AccurateUnicornCoalPaperclip')
   end
 
   if ''.respond_to?(:match?)
     x.report('match?') do
-      blacklist.match? 'AccurateUnicornCoalPaperclip'
+      blacklist.match? Regexp.escape('AccurateUnicornCoalPaperclip')
     end
   end
 
   x.report('===') do
-    Regexp.new('AccurateUnicornCoalPaperclip') === blacklist
+    Regexp.new(Regexp.escape('AccurateUnicornCoalPaperclip')) === blacklist
   end
 
   x.report('include?') do
-    blacklist.include? 'AccurateUnicornCoalPaperclip'
+    blacklist.include? Regexp.escape('AccurateUnicornCoalPaperclip')
   end
 
   x.compare!
