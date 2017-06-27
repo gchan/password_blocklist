@@ -11,6 +11,11 @@ describe PasswordBlacklist::Checker do
     it 'returns false if the provided password is not blacklisted' do
       expect(subject.blacklisted?('gengar')).to eq(false)
     end
+
+    it 'escapes regular expression characters' do
+      expect(subject.blacklisted?(')')).to eq(false)
+      expect(subject.blacklisted?('.*')).to eq(false)
+    end
   end
 
   describe '#inspect' do
