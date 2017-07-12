@@ -9,7 +9,7 @@ describe PasswordBlacklist::Checker do
     end
 
     it 'returns false if the provided password is not blacklisted' do
-      expect(subject.blacklisted?('gengar')).to eq(false)
+      expect(subject.blacklisted?('CorrectHorseBatteryStaple')).to eq(false)
     end
 
     it 'ignores password case sensitivity' do
@@ -17,7 +17,7 @@ describe PasswordBlacklist::Checker do
     end
 
     it 'escapes regular expression characters' do
-      expect(subject.blacklisted?(')')).to eq(false)
+      expect(subject.blacklisted?(')(')).to eq(false)
       expect(subject.blacklisted?('.*')).to eq(false)
     end
   end

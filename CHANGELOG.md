@@ -1,3 +1,7 @@
+0.3.0 / 2017-07-13
+------
+Use the "Probable-Wordlists" (https://github.com/berzerk0/Probable-Wordlists) wordlist. Thanks olbrich!
+
 0.2.0 / 2017-07-12
 ------
 Ignore password case sensitivity when testing a password. Thanks olbrich!

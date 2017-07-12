@@ -34,7 +34,7 @@ Benchmark.ips do |x|
   x.warmup = 2
   x.time = 5
 
-  file_path = File.expand_path('../../data/100k_passwords.txt', __FILE__)
+  file_path = File.expand_path('../../data/Top95Thousand-probable.txt', __FILE__)
   blacklist = File.read(file_path)
 
   x.report('match') do
@@ -64,7 +64,7 @@ Benchmark.ips do |x|
   x.warmup = 2
   x.time = 5
 
-  file_path = File.expand_path('../../data/100k_passwords.txt', __FILE__)
+  file_path = File.expand_path('../../data/Top95Thousand-probable.txt', __FILE__)
   blacklist = File.read(file_path)
   array     = blacklist.split("\n")
   set       = array.to_set
@@ -90,7 +90,7 @@ Benchmark.ips do |x|
   x.warmup = 2
   x.time = 5
 
-  file_path = File.expand_path('../../data/100k_passwords.txt', __FILE__)
+  file_path = File.expand_path('../../data/Top95Thousand-probable.txt', __FILE__)
   blacklist = File.read(file_path)
 
   x.report('String#downcase') do

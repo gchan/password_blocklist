@@ -3,7 +3,8 @@
 
 [![Build Status](https://travis-ci.org/gchan/password_blacklist.svg?branch=master)](https://travis-ci.org/gchan/password_blacklist) [![Coverage Status](https://coveralls.io/repos/gchan/password_blacklist/badge.svg?branch=master)](https://coveralls.io/r/gchan/password_blacklist?branch=master) [![Code Climate](https://codeclimate.com/github/gchan/password_blacklist/badges/gpa.svg)](https://codeclimate.com/github/gchan/password_blacklist)
 
-Check the presence of a string in a blacklist of the top 100,000 commonly used passwords (sourced from Mark Burnett's [ten million password release](https://xato.net/today-i-am-releasing-ten-million-passwords-b6278bbe7495)).
+Check the presence of a string in a blacklist of the top 95,000 commonly used passwords (sourced from berzerk0
+'s [Probable-Wordlists](https://github.com/berzerk0/Probable-Wordlists)).
 
 This very simple Ruby library can be integrated into your registration/authentication system to prevent users from setting commonly used (and easy to guess) passwords.
 
@@ -79,8 +80,10 @@ Bug reports and pull requests are welcome on GitHub at https://www.github.com/gc
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
 
-## License
+## Licenses
 
 password_blacklist is Copyright (c) 2017 Gordon Chan and is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+
+Top95Thousand-probable.txt is licensed under CC BY-SA 4.0 (Creative Commons Attribution-ShareAlike 4.0 International)
 
 [![Analytics](https://ga-beacon.appspot.com/UA-70790190-2/password_blacklist/README.md?flat)](https://github.com/igrigorik/ga-beacon)
