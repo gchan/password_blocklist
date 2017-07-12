@@ -57,3 +57,29 @@ Benchmark.ips do |x|
 
   x.compare!
 end
+
+# Testing in memory data structures (assuming space is not an issue)
+
+Benchmark.ips do |x|
+  x.warmup = 2
+  x.time = 5
+
+  file_path = File.expand_path('../../data/100k_passwords.txt', __FILE__)
+  blacklist = File.read(file_path)
+  array     = blacklist.split("\n")
+  set       = array.to_set
+
+  x.report('String#match') do
+    blacklist.match Regexp.escape('AccurateUnicornCoalPaperclip')
+  end
+
+  x.report('Set#include?') do
+    set.include?('AccurateUnicornCoalPaperclip')
+  end
+
+  x.report('Array#bsearch') do
+    !!array.bsearch { |password| 'AccurateUnicornCoalPaperclip' <=> password }
+  end
+
+  x.compare!
+end
