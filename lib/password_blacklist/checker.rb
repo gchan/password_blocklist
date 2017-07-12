@@ -7,7 +7,7 @@ module PasswordBlacklist
     end
 
     def blacklisted?(password)
-      !@data.match(/#{Regexp.quote(password)}/).nil?
+      !!@data.match(Regexp.escape(password.downcase))
     end
 
     def inspect

@@ -12,6 +12,10 @@ describe PasswordBlacklist::Checker do
       expect(subject.blacklisted?('gengar')).to eq(false)
     end
 
+    it 'ignores password case sensitivity' do
+      expect(subject.blacklisted?('PokeMon')).to eq(true)
+    end
+
     it 'escapes regular expression characters' do
       expect(subject.blacklisted?(')')).to eq(false)
       expect(subject.blacklisted?('.*')).to eq(false)

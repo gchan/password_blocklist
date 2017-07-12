@@ -1,3 +1,7 @@
+0.2.0 / 2017-07-12
+------
+Ignore password case sensitivity when testing a password. Thanks olbrich!
+
 0.1.1 / 2017-06-27
 ------
 Escape regular expression characters when checking passwords. Thanks mmzoo!
