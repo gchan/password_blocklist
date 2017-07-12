@@ -38,7 +38,7 @@ Benchmark.ips do |x|
   blacklist = File.read(file_path)
 
   x.report('match') do
-    blacklist.match Regexp.escape('AccurateUnicornCoalPaperclip')
+    !!blacklist.match(Regexp.escape('AccurateUnicornCoalPaperclip'))
   end
 
   if ''.respond_to?(:match?)
@@ -79,6 +79,26 @@ Benchmark.ips do |x|
 
   x.report('Array#bsearch') do
     !!array.bsearch { |password| 'AccurateUnicornCoalPaperclip' <=> password }
+  end
+
+  x.compare!
+end
+
+# Testing two forms of ignoring case sensitivity
+
+Benchmark.ips do |x|
+  x.warmup = 2
+  x.time = 5
+
+  file_path = File.expand_path('../../data/100k_passwords.txt', __FILE__)
+  blacklist = File.read(file_path)
+
+  x.report('String#downcase') do
+    blacklist.match Regexp.escape('AccurateUnicornCoalPaperclip'.downcase)
+  end
+
+  x.report('Regexp ignore case') do
+    blacklist.match /#{Regexp.escape('AccurateUnicornCoalPaperclip')}/i
   end
 
   x.compare!
