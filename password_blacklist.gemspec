@@ -22,15 +22,15 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.platform      = Gem::Platform::RUBY
 
-  spec.required_ruby_version = '~> 2.0'
+  spec.required_ruby_version = '>= 2.0'
 
   spec.add_development_dependency 'bundler', '~> 1.13'
   spec.add_development_dependency 'rake', '~> 12.0.0'
 
   spec.add_development_dependency 'rspec', '~> 3.5'
-  spec.add_development_dependency 'simplecov', '~> 0.12.0'
+  spec.add_development_dependency 'simplecov', '~> 0.16.1'
   spec.add_development_dependency 'rubocop', '~> 0.49.1'
-  spec.add_development_dependency 'coveralls', '~> 0.8.18'
+  spec.add_development_dependency 'coveralls', '~> 0.8.23'
   spec.add_development_dependency 'codeclimate-test-reporter', '~> 1.0.4'
   spec.add_development_dependency 'benchmark-ips', '~> 2.7.2'
 end
