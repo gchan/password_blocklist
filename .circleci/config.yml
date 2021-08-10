@@ -10,7 +10,7 @@ jobs:
     steps:
       - ruby/install:
           version: '2.7.3' 
-    steps:
+      - ruby/install-deps
       - ruby/rspec-test
 
 workflows:
