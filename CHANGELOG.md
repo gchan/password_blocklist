@@ -1,3 +1,11 @@
+0.4.0 / 2021-08-10
+------
+Support Ruby 3.0. Thanks matssigge!
+Update simplecov and coveralls development dependency versions. Thanks matssigge!
+Update rake and bundler development dependency versions.
+Fix benchmark code.
+Add memory profiler to compare String, Array and Set.
+
 0.3.0 / 2017-07-13
 ------
 Use the "Probable-Wordlists" (https://github.com/berzerk0/Probable-Wordlists) wordlist. Thanks olbrich!
