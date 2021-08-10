@@ -33,4 +33,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'coveralls', '~> 0.8.23'
   spec.add_development_dependency 'codeclimate-test-reporter', '~> 1.0.4'
   spec.add_development_dependency 'benchmark-ips', '~> 2.7.2'
+  spec.add_development_dependency 'memory_profiler', '~> 1.0.0'
 end

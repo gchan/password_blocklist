@@ -1,0 +1,56 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'password_blacklist'
+require 'memory_profiler'
+require 'set'
+
+report_options = {
+  scale_bytes: true,
+  detailed_report: false,
+  retained_strings: 0,
+  allocated_strings: 0
+}
+
+# String
+report = MemoryProfiler.report do
+  tester = PasswordBlacklist::Checker.new
+
+  100.times do
+    tester.blacklisted?('AccurateUnicornCoalPaperclip')
+  end
+end
+
+puts "String (current implementation)"
+report.pretty_print(report_options)
+
+
+# Array
+report = MemoryProfiler.report do
+  file_path = File.expand_path('../../data/Top95Thousand-probable.txt', __FILE__)
+  blacklist = File.read(file_path)
+  array     = blacklist.split("\n")
+
+  100.times do
+    !!array.bsearch { |password| 'AccurateUnicornCoalPaperclip' <=> password }
+  end
+end
+
+puts "Array"
+report.pretty_print(report_options)
+
+
+# Set
+report = MemoryProfiler.report do
+  file_path = File.expand_path('../../data/Top95Thousand-probable.txt', __FILE__)
+  blacklist = File.read(file_path)
+  array     = blacklist.split("\n")
+  set       = array.to_set
+
+  100.times do
+    set.include?('AccurateUnicornCoalPaperclip')
+  end
+end
+
+puts "Set"
+report.pretty_print(report_options)
