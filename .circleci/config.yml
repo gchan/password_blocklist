@@ -11,6 +11,7 @@ jobs:
       - ruby/install:
           version: '2.7.3' 
       - ruby/install-deps
+          bundler-version: '2.2.20' 
       - ruby/rspec-test
 
 workflows:
