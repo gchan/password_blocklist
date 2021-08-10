@@ -1,0 +1,19 @@
+version: 2.1
+orbs:
+  ruby: circleci/ruby@0.1.2 
+
+jobs:
+  example-job:
+    docker:
+      # replace with your preferred image
+      - image: cimg/base:stable
+    steps:
+      - ruby/install:
+          version: '2.7.3' 
+    steps:
+      - ruby/rspec-test
+
+workflows:
+  example-workflow:
+    jobs:
+      - example-job
