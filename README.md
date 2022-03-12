@@ -3,12 +3,12 @@
 
 [![Build Status](https://travis-ci.org/gchan/password_blacklist.svg?branch=master)](https://travis-ci.org/gchan/password_blacklist) [![Coverage Status](https://coveralls.io/repos/gchan/password_blacklist/badge.svg?branch=master)](https://coveralls.io/r/gchan/password_blacklist?branch=master) [![Code Climate](https://codeclimate.com/github/gchan/password_blacklist/badges/gpa.svg)](https://codeclimate.com/github/gchan/password_blacklist)
 
-Check the presence of a string in a blacklist of the top 95,000 commonly used passwords (sourced from berzerk0
+Check the presence of a string in a blacklist of the most commonly used passwords (sourced from berzerk0
 's [Probable-Wordlists](https://github.com/berzerk0/Probable-Wordlists)).
 
 This very simple Ruby library can be integrated into your registration/authentication system to prevent users from setting commonly used (and easy to guess) passwords.
 
-This gem has an insignificant memory footprint with an execution cost of approximately 1 ms. A memory persistence option is available to further reduce execution time.
+This gem has a tiny memory footprint with an execution cost of approximately 1 ms for the default list size. A memory persistence option is available to further reduce execution time.
 
 ## Devise Extension
 
@@ -38,6 +38,33 @@ PasswordBlacklist.blacklisted?("pokemon")
 PasswordBlacklist.blacklisted?("AccurateUnicornCoalPaperclip")
 => false
 ```
+### Optional List Size Selection
+
+Pass a `list_size` parameter to select a different list than the default (medium) size:
+  ```ruby
+  # PasswordBlacklist.blacklisted?(password, list_size)
+  # e.g.
+  PasswordBlacklist.blacklisted?('pokemon', 'lg')
+  ```
+
+| list_size | File name | File size|
+| ---- | ---- | ----|
+| xs | `Top1575-probable-v2.txt` | 12 KB |
+| sm | `Top12Thousand-probable-v2.txt` | 100 KB |
+| md (default) | `Top95Thousand-probable.txt` | 822 KB |
+| lg | `Top304Thousand-probable-v2.txt` | 2.8 MB |
+| xl | `Top1pt6Million-probable-v2.txt` | 15.9 MB |
+
+Note: The list size you select will impact memory footprint and processing time.
+Here is a comparison, for example, of the medium (default), and large lists:
+
+  ```
+  841.74 kB allocated on 95k wordlist # 'md' memory
+  2.83 MB allocated on 304k wordlist (~3.36x more) # 'lg' memory
+
+  2110.9 i/s on 95k wordlist # 'md' speed
+  613.7 i/s on 304 wordlist (~3.44x slower). # 'lg' speed
+  ```
 
 ### Test multiple passwords
 
@@ -84,6 +111,6 @@ Bug reports and pull requests are welcome on GitHub at https://www.github.com/gc
 
 password_blacklist is Copyright (c) 2017 Gordon Chan and is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
-Top95Thousand-probable.txt is licensed under CC BY-SA 4.0 (Creative Commons Attribution-ShareAlike 4.0 International)
+The [Probable-Wordlists](https://github.com/berzerk0/Probable-Wordlists) data files are licensed under CC BY-SA 4.0 (Creative Commons Attribution-ShareAlike 4.0 International)
 
 [![Analytics](https://ga-beacon.appspot.com/UA-70790190-2/password_blacklist/README.md?flat)](https://github.com/igrigorik/ga-beacon)
