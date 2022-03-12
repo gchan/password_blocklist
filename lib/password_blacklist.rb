@@ -4,7 +4,7 @@ require 'password_blacklist/checker'
 module PasswordBlacklist
   module_function
 
-  def blacklisted?(password)
-    Checker.new.blacklisted?(password)
+  def blacklisted?(password, list_size='md')
+    Checker.new.blacklisted?(password, list_size)
   end
 end
