@@ -1,7 +1,7 @@
 # password_blacklist
 [![Gem Version](https://badge.fury.io/rb/password_blacklist.svg)](http://badge.fury.io/rb/password_blacklist) [![Dependency Status](https://gemnasium.com/gchan/password_blacklist.svg?branch=main)](https://gemnasium.com/gchan/password_blacklist) ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-[![Build Status](https://travis-ci.org/gchan/password_blacklist.svg?branch=main)](https://travis-ci.org/gchan/password_blacklist) [![Coverage Status](https://coveralls.io/repos/gchan/password_blacklist/badge.svg?branch=main)](https://coveralls.io/r/gchan/password_blacklist?branch=main) [![Code Climate](https://codeclimate.com/github/gchan/password_blacklist/badges/gpa.svg)](https://codeclimate.com/github/gchan/password_blacklist)
+[![Ruby Tests on Github Actions](https://github.com/gchan/password_blacklist/actions/workflows/ruby.yml/badge.svg)](https://github.com/gchan/password_blacklist/actions/workflows/ruby.yml) [![Coverage Status](https://coveralls.io/repos/gchan/password_blacklist/badge.svg?branch=main)](https://coveralls.io/r/gchan/password_blacklist?branch=main) [![Code Climate](https://codeclimate.com/github/gchan/password_blacklist/badges/gpa.svg)](https://codeclimate.com/github/gchan/password_blacklist)
 
 Check the presence of a string in a blacklist of the most commonly used passwords (sourced from berzerk0
 's [Probable-Wordlists](https://github.com/berzerk0/Probable-Wordlists)). Different sized lists are
@@ -87,7 +87,7 @@ checker.blacklisted?("pokemon")
 
 ## Supported Ruby versions
 
-password_blacklist supports MRI Ruby 2.x and Ruby 3.x. The specific Ruby versions we build and test on can be found at [TravisCI](https://travis-ci.org/gchan/password_blacklist).
+password_blacklist supports MRI Ruby 2.5+ and Ruby 3.x. The specific Ruby versions we build and test on can be found on this Github Action [workflow file](https://github.com/gchan/password_blacklist/blob/main/.github/workflow/ruby.yml).
 
 ## Development
 
