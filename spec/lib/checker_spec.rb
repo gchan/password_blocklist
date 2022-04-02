@@ -4,6 +4,7 @@ require 'spec_helper'
 
 describe PasswordBlacklist::Checker do
   subject { described_class.new }
+
   let(:preloaded) { described_class.new(:xs) }
 
   describe '.new' do
@@ -14,7 +15,7 @@ describe PasswordBlacklist::Checker do
     end
 
     it 'does not preload a list if no list size is provided' do
-      expect(File).to_not receive(:read)
+      expect(File).not_to receive(:read)
 
       subject
     end
@@ -22,38 +23,38 @@ describe PasswordBlacklist::Checker do
 
   describe '#blacklisted?' do
     it 'returns true if the provided password is in the blocklist' do
-      expect(subject.blacklisted?('pokemon')).to eq(true)
+      expect(subject.blacklisted?('pokemon')).to be(true)
     end
 
     it 'returns false if the provided password is not in the blocklist' do
-      expect(subject.blacklisted?('CorrectHorseBatteryStaple')).to eq(false)
+      expect(subject.blacklisted?('CorrectHorseBatteryStaple')).to be(false)
     end
 
     context 'using differente sized blocklists' do
       it 'supports an extra small list' do
-        expect(subject.blacklisted?('pokemon', :xs)).to eq(true)
-        expect(subject.blacklisted?('assassins', :xs)).to eq(false)
+        expect(subject.blacklisted?('pokemon', :xs)).to be(true)
+        expect(subject.blacklisted?('assassins', :xs)).to be(false)
       end
 
       it 'supports a small list' do
-        expect(subject.blacklisted?('assassins', :sm)).to eq(true)
-        expect(subject.blacklisted?('blackeyedpeas', :sm)).to eq(false)
+        expect(subject.blacklisted?('assassins', :sm)).to be(true)
+        expect(subject.blacklisted?('blackeyedpeas', :sm)).to be(false)
       end
 
       it 'supports a medium list' do
-        expect(subject.blacklisted?('blackeyedpeas', :md)).to eq(true)
-        expect(subject.blacklisted?('deduplication', :md)).to eq(false)
+        expect(subject.blacklisted?('blackeyedpeas', :md)).to be(true)
+        expect(subject.blacklisted?('deduplication', :md)).to be(false)
       end
 
       it 'supports a large list' do
-        expect(subject.blacklisted?('deduplication', :lg)).to eq(true)
-        expect(subject.blacklisted?('amakingsortofbutton', :lg)).to eq(false)
+        expect(subject.blacklisted?('deduplication', :lg)).to be(true)
+        expect(subject.blacklisted?('amakingsortofbutton', :lg)).to be(false)
       end
 
       it 'supports an extra large list' do
-        expect(subject.blacklisted?('amakingsortofbutton', :xl)).to eq(true)
+        expect(subject.blacklisted?('amakingsortofbutton', :xl)).to be(true)
         expect(subject.blacklisted?('CorrectHorseBattleStaple', :xl))
-          .to eq(false)
+          .to be(false)
       end
 
       it 'raise an error for unknown list size' do
@@ -63,16 +64,16 @@ describe PasswordBlacklist::Checker do
     end
 
     it 'ignores password case sensitivity' do
-      expect(subject.blacklisted?('PokeMon', :sm)).to eq(true)
+      expect(subject.blacklisted?('PokeMon', :sm)).to be(true)
     end
 
     it 'escapes regular expression characters' do
-      expect(subject.blacklisted?(')(', :sm)).to eq(false)
-      expect(subject.blacklisted?('.*', :sm)).to eq(false)
+      expect(subject.blacklisted?(')(', :sm)).to be(false)
+      expect(subject.blacklisted?('.*', :sm)).to be(false)
     end
 
     it 'supports strings for list size' do
-      expect(subject.blacklisted?('password', 'sm')).to eq(true)
+      expect(subject.blacklisted?('password', 'sm')).to be(true)
     end
 
     context 'in-memory list' do
@@ -85,7 +86,7 @@ describe PasswordBlacklist::Checker do
       it 'loaded and retained' do
         subject.blacklisted?('pokemon')
 
-        expect(File).to_not receive(:read)
+        expect(File).not_to receive(:read)
 
         subject.blacklisted?('password')
       end
@@ -93,7 +94,7 @@ describe PasswordBlacklist::Checker do
       it 'is used if preloaded' do
         preloaded
 
-        expect(File).to_not receive(:read)
+        expect(File).not_to receive(:read)
 
         preloaded.blacklisted?('pokemon')
       end
@@ -101,7 +102,7 @@ describe PasswordBlacklist::Checker do
       it 'is used if the list is the same' do
         preloaded
 
-        expect(File).to_not receive(:read)
+        expect(File).not_to receive(:read)
 
         preloaded.blacklisted?('pokemon', :xs)
       end
@@ -119,7 +120,7 @@ describe PasswordBlacklist::Checker do
 
         preloaded.blacklisted?('pokemon', :xl)
 
-        expect(File).to_not receive(:read)
+        expect(File).not_to receive(:read)
 
         preloaded.blacklisted?('password', :xl)
         preloaded.blacklisted?('querty')

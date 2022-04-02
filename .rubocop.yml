@@ -1,0 +1,6 @@
+require:
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+

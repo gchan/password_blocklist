@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe PasswordBlacklist do
   it 'has a version number' do
-    expect(PasswordBlacklist::VERSION).not_to be nil
+    expect(PasswordBlacklist::VERSION).not_to be_nil
   end
 
   describe '.blacklisted?' do
@@ -12,7 +12,7 @@ describe PasswordBlacklist do
       spy = spy('PasswordBlacklist::Checker')
       expect(PasswordBlacklist::Checker).to receive(:new).and_return(spy)
 
-      PasswordBlacklist.blacklisted?('pokemon')
+      described_class.blacklisted?('pokemon')
       expect(spy).to have_received(:blacklisted?).with('pokemon', :md)
     end
 
@@ -20,7 +20,7 @@ describe PasswordBlacklist do
       spy = spy('PasswordBlacklist::Checker')
       expect(PasswordBlacklist::Checker).to receive(:new).and_return(spy)
 
-      PasswordBlacklist.blacklisted?('pokemon', :lg)
+      described_class.blacklisted?('pokemon', :lg)
       expect(spy).to have_received(:blacklisted?).with('pokemon', :lg)
     end
   end
