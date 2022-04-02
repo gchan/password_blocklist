@@ -1,13 +1,10 @@
 require 'simplecov'
 require 'simplecov-lcov'
-require 'codeclimate-test-reporter'
-require 'simplecov_json_formatter'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
   [
     SimpleCov::Formatter::LcovFormatter,
-    SimpleCov::Formatter::HTMLFormatter,
-    SimpleCov::Formatter::JSONFormatter
+    SimpleCov::Formatter::HTMLFormatter
   ]
 )
 
