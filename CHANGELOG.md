@@ -1,6 +1,13 @@
-0.5.0 / unreleased
+0.5.0 / 2022-04-02
 ------
 * Support different sized blocklists as an option. Thanks roberttravispierce!
+* Renamed password_blacklist to password_blocklist.
+
+0.4.1 / 2022-04-02
+------
+* Added a post-install message and deprecation message regarding renaming
+this library.
+* No other functional changes.
 
 0.4.0 / 2021-08-10
 ------

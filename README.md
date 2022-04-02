@@ -85,6 +85,28 @@ checker.blocklisted?("pokemon")
 
 password_blocklist supports MRI Ruby 2.5+ and Ruby 3.x. The specific Ruby versions we build and test on can be found on this Github Action [workflow file](https://github.com/gchan/password_blocklist/blob/main/.github/workflow/ruby.yml).
 
+## Migrating to v0.5.0
+
+This library was renamed to password_blocklist in v0.5.0
+
+To easily migrate across:
+
+1. Update your Gemfile to use `password_blocklist` and run `bundle`
+2. Rename all instances of original Module
+  ```bash
+  sed -i s/PasswordBlacklist/PasswordBlocklist/g ./**/*.rb
+  ```
+3. Rename all method calls
+  ```bash
+  sed -i s/blacklisted?/blocklisted?/g ./**/*.rb
+  ```
+4. One last rename
+  ```bash
+  sed -i s/password_blacklist/password_blocklist/g ./**/*.rb
+  ```
+5. Verify the correct files have been updated and your code remains
+functional
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` or `rspec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment. Use `bin/benchmark` to run some benchmarks.
