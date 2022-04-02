@@ -50,7 +50,9 @@ Benchmark.ips do |x|
   end
 
   x.report('===') do
+    # rubocop:disable Style/CaseEquality
     Regexp.new(Regexp.escape('AccurateUnicornCoalPaperclip')) === blacklist
+    # rubocop:enable all
   end
 
   x.report('include?') do
