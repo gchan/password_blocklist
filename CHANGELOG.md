@@ -24,8 +24,8 @@
 
 0.1.0 / 2017-02-01
 ------
-* Rename `test` methods to `blacklisted?`.
-* Rename `PasswordBlacklist::Tester` to `PasswordBlacklist::Checker`.
+* Rename `test` methods to `blocklisted?`.
+* Rename `PasswordBlocklist::Tester` to `PasswordBlocklist::Checker`.
 * Update README.
 * Minor changes to resolve Rubcop violations.
 

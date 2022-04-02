@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module PasswordBlacklist
+module PasswordBlocklist
   class Checker
     class UnknownListSizeError < StandardError; end
 
@@ -18,7 +18,7 @@ module PasswordBlacklist
       load_list_file(list_size) if list_size
     end
 
-    def blacklisted?(password, list_size = nil)
+    def blocklisted?(password, list_size = nil)
       load_list_file(DEFAULT_SIZE) if @current_list_size.nil?
       load_list_file(list_size) if list_size && @current_list_size != list_size.to_sym
 

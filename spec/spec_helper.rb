@@ -17,4 +17,4 @@ SimpleCov::Formatter::LcovFormatter.config.single_report_path = 'coverage/lcov.i
 
 SimpleCov.start
 
-require 'password_blacklist'
+require 'password_blocklist'

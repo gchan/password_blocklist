@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 require 'bundler/setup'
-require 'password_blacklist'
+require 'password_blocklist'
 require 'memory_profiler'
 require 'set'
 
@@ -15,10 +15,10 @@ report_options = {
 
 # String
 report = MemoryProfiler.report do
-  tester = PasswordBlacklist::Checker.new
+  tester = PasswordBlocklist::Checker.new
 
   100.times do
-    tester.blacklisted?('AccurateUnicornCoalPaperclip')
+    tester.blocklisted?('AccurateUnicornCoalPaperclip')
   end
 end
 
@@ -28,8 +28,8 @@ report.pretty_print(report_options)
 # Array
 report = MemoryProfiler.report do
   file_path = File.expand_path('../data/Top95Thousand-probable.txt', __dir__)
-  blacklist = File.read(file_path)
-  array     = blacklist.split("\n")
+  blocklist = File.read(file_path)
+  array     = blocklist.split("\n")
 
   100.times do
     !array.bsearch { |password| 'AccurateUnicornCoalPaperclip' <=> password }.nil?
@@ -42,8 +42,8 @@ report.pretty_print(report_options)
 # Set
 report = MemoryProfiler.report do
   file_path = File.expand_path('../data/Top95Thousand-probable.txt', __dir__)
-  blacklist = File.read(file_path)
-  array     = blacklist.split("\n")
+  blocklist = File.read(file_path)
+  array     = blocklist.split("\n")
   set       = array.to_set
 
   100.times do

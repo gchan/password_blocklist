@@ -3,7 +3,7 @@
 
 require 'set'
 require 'bundler/setup'
-require 'password_blacklist'
+require 'password_blocklist'
 require 'benchmark/ips'
 
 Benchmark.ips do |x|
@@ -13,16 +13,16 @@ Benchmark.ips do |x|
   x.report('file read') do |times|
     i = 0
     while i < times
-      PasswordBlacklist.blacklisted?('AccurateUnicornCoalPaperclip')
+      PasswordBlocklist.blocklisted?('AccurateUnicornCoalPaperclip')
       i += 1
     end
   end
 
   x.report('in memory') do |times|
-    tester = PasswordBlacklist::Checker.new
+    tester = PasswordBlocklist::Checker.new
     i = 0
     while i < times
-      tester.blacklisted?('AccurateUnicornCoalPaperclip')
+      tester.blocklisted?('AccurateUnicornCoalPaperclip')
       i += 1
     end
   end
@@ -37,26 +37,26 @@ Benchmark.ips do |x|
   x.time = 5
 
   file_path = File.expand_path('../data/Top95Thousand-probable.txt', __dir__)
-  blacklist = File.read(file_path)
+  blocklist = File.read(file_path)
 
   x.report('match') do
-    !blacklist.match(Regexp.escape('AccurateUnicornCoalPaperclip')).nil?
+    !blocklist.match(Regexp.escape('AccurateUnicornCoalPaperclip')).nil?
   end
 
   if ''.respond_to?(:match?)
     x.report('match?') do
-      blacklist.match? Regexp.escape('AccurateUnicornCoalPaperclip')
+      blocklist.match? Regexp.escape('AccurateUnicornCoalPaperclip')
     end
   end
 
   x.report('===') do
     # rubocop:disable Style/CaseEquality
-    Regexp.new(Regexp.escape('AccurateUnicornCoalPaperclip')) === blacklist
+    Regexp.new(Regexp.escape('AccurateUnicornCoalPaperclip')) === blocklist
     # rubocop:enable all
   end
 
   x.report('include?') do
-    blacklist.include? Regexp.escape('AccurateUnicornCoalPaperclip')
+    blocklist.include? Regexp.escape('AccurateUnicornCoalPaperclip')
   end
 
   x.compare!
@@ -69,12 +69,12 @@ Benchmark.ips do |x|
   x.time = 5
 
   file_path = File.expand_path('../data/Top95Thousand-probable.txt', __dir__)
-  blacklist = File.read(file_path)
-  array     = blacklist.split("\n")
+  blocklist = File.read(file_path)
+  array     = blocklist.split("\n")
   set       = array.to_set
 
   x.report('String#match') do
-    blacklist.match Regexp.escape('AccurateUnicornCoalPaperclip')
+    blocklist.match Regexp.escape('AccurateUnicornCoalPaperclip')
   end
 
   x.report('Set#include?') do
@@ -95,14 +95,14 @@ Benchmark.ips do |x|
   x.time = 5
 
   file_path = File.expand_path('../data/Top95Thousand-probable.txt', __dir__)
-  blacklist = File.read(file_path)
+  blocklist = File.read(file_path)
 
   x.report('String#downcase') do
-    blacklist.match Regexp.escape('AccurateUnicornCoalPaperclip'.downcase)
+    blocklist.match Regexp.escape('AccurateUnicornCoalPaperclip'.downcase)
   end
 
   x.report('Regexp ignore case') do
-    blacklist.match(/#{Regexp.escape('AccurateUnicornCoalPaperclip')}/i)
+    blocklist.match(/#{Regexp.escape('AccurateUnicornCoalPaperclip')}/i)
   end
 
   x.compare!

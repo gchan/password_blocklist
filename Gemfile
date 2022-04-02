@@ -2,5 +2,5 @@
 
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in password_blacklist.gemspec
+# Specify your gem's dependencies in password_blocklist.gemspec
 gemspec
