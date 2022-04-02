@@ -1,3 +1,9 @@
+0.4.1 / 2022-04-02
+------
+* Added a post-install message and deprecation message regarding renaming
+this library.
+* No other functional changes.
+
 0.4.0 / 2021-08-10
 ------
 Support Ruby 3.0. Thanks matssigge!

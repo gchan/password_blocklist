@@ -15,6 +15,11 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://www.github.com/gchan/password_blacklist'
   spec.license       = 'MIT'
 
+  spec.post_install_message = "The password_blacklist gem has been deprecated" \
+    " and has been replaced by password_blocklist.\nPlease switch to " \
+    "password_blocklist for continued support and new features.\nMigration " \
+    "guide can be found in the README."
+
   spec.files = Dir['lib/**/*.rb'] + Dir['data/*'] +
                %w(password_blacklist.gemspec CHANGELOG.md LICENSE.txt README.md)
 
