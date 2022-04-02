@@ -11,10 +11,6 @@ This very simple Ruby library can be integrated into your registration/authentic
 
 This gem has a tiny memory footprint with an execution cost of approximately 1 ms for the default list size. A memory persistence option is available to further reduce execution time.
 
-## Devise Extension
-
-Use [`devise_password_blacklist`](https://www.github.com/gchan/devise_password_blacklist) to easily add password blacklisting to your Rails application.
-
 ## Installation
 
 Gemfile:
@@ -47,13 +43,13 @@ Pass a `list_size` parameter to select a different list than the default (medium
 PasswordBlacklist.blacklisted?('pokemon', :lg)
 ```
 
-| list_size    | File name                        | File size |
-| ----         | ----                             | ----      |
-| xs           | `Top1575-probable-v2.txt`        | 12 KB     |
-| sm           | `Top12Thousand-probable-v2.txt`  | 100 KB    |
-| md (default) | `Top95Thousand-probable.txt`     | 822 KB    |
-| lg           | `Top304Thousand-probable-v2.txt` | 2.8 MB    |
-| xl           | `Top1pt6Million-probable-v2.txt` | 15.9 MB   |
+| list_size    | File name                        | File size | Passwords
+| ----         | ----                             | ----      | ----
+| xs           | `Top1575-probable-v2.txt`        | 12 KB     | 1,575
+| sm           | `Top12Thousand-probable-v2.txt`  | 100 KB    | 12,645
+| md (default) | `Top95Thousand-probable.txt`     | 822 KB    | 94,988
+| lg           | `Top304Thousand-probable-v2.txt` | 2.8 MB    | 303,872
+| xl           | `Top1pt6Million-probable-v2.txt` | 15.9 MB   | 1,667,462
 
 Note the list size you select will use more memory and linearly affect
 the processing time.
