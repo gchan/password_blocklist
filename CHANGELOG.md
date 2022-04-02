@@ -3,10 +3,12 @@
 * Support different sized blocklists as an option. Thanks roberttravispierce!
 * Renamed password_blacklist to password_blocklist.
 
-0.4.1 / 2022-04-02
+0.4.1 & 0.4.2 / 2022-04-02
 ------
 * Added a post-install message and deprecation message regarding renaming
 this library.
+* 0.4.2 updated the gem description to include a deprecation message to
+be displayed on Rubygems.org
 * No other functional changes.
 
 0.4.0 / 2021-08-10
