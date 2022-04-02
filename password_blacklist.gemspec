@@ -29,9 +29,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', ">= 12.3.3"
 
   spec.add_development_dependency 'rspec', '~> 3.5'
-  spec.add_development_dependency 'simplecov', '~> 0.16.1'
+  spec.add_development_dependency 'simplecov', '~> 0.21.2'
+  spec.add_development_dependency 'simplecov-lcov', '~> 0.8.0'
   spec.add_development_dependency 'rubocop', '~> 0.49.1'
-  spec.add_development_dependency 'coveralls', '~> 0.8.23'
   spec.add_development_dependency 'codeclimate-test-reporter', '~> 1.0.4'
   spec.add_development_dependency 'benchmark-ips', '~> 2.7.2'
   spec.add_development_dependency 'memory_profiler', '~> 1.0.0'
