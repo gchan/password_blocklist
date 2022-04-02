@@ -11,15 +11,15 @@ describe PasswordBlacklist do
       expect(PasswordBlacklist::Checker).to receive(:new).and_return(spy)
 
       PasswordBlacklist.blacklisted?('pokemon')
-      expect(spy).to have_received(:blacklisted?).with('pokemon', 'md')
+      expect(spy).to have_received(:blacklisted?).with('pokemon', :md)
     end
 
     it 'delegates to PasswordBlacklist::Checker with list size param' do
       spy = spy('PasswordBlacklist::Checker')
       expect(PasswordBlacklist::Checker).to receive(:new).and_return(spy)
 
-      PasswordBlacklist.blacklisted?('pokemon', 'md')
-      expect(spy).to have_received(:blacklisted?).with('pokemon', 'md')
+      PasswordBlacklist.blacklisted?('pokemon', :lg)
+      expect(spy).to have_received(:blacklisted?).with('pokemon', :lg)
     end
   end
 end
