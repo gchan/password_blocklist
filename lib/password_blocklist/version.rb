@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module PasswordBlocklist
-  VERSION = '0.0.1.pre'
+  VERSION = '0.5.0.pre'
 end
