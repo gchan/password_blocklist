@@ -4,7 +4,8 @@
 [![Build Status](https://travis-ci.org/gchan/password_blacklist.svg?branch=main)](https://travis-ci.org/gchan/password_blacklist) [![Coverage Status](https://coveralls.io/repos/gchan/password_blacklist/badge.svg?branch=main)](https://coveralls.io/r/gchan/password_blacklist?branch=main) [![Code Climate](https://codeclimate.com/github/gchan/password_blacklist/badges/gpa.svg)](https://codeclimate.com/github/gchan/password_blacklist)
 
 Check the presence of a string in a blacklist of the most commonly used passwords (sourced from berzerk0
-'s [Probable-Wordlists](https://github.com/berzerk0/Probable-Wordlists)).
+'s [Probable-Wordlists](https://github.com/berzerk0/Probable-Wordlists)). Different sized lists are
+supported, with the default list containing 95,000 passwords.
 
 This very simple Ruby library can be integrated into your registration/authentication system to prevent users from setting commonly used (and easy to guess) passwords.
 
@@ -38,33 +39,24 @@ PasswordBlacklist.blacklisted?("pokemon")
 PasswordBlacklist.blacklisted?("AccurateUnicornCoalPaperclip")
 => false
 ```
-### Optional List Size Selection
+### Optional list size selection
 
-Pass a `list_size` parameter to select a different list than the default (medium) size:
-  ```ruby
-  # PasswordBlacklist.blacklisted?(password, list_size)
-  # e.g.
-  PasswordBlacklist.blacklisted?('pokemon', 'lg')
-  ```
+Pass a `list_size` parameter to select a different list than the default (medium) size
 
-| list_size | File name | File size|
-| ---- | ---- | ----|
-| xs | `Top1575-probable-v2.txt` | 12 KB |
-| sm | `Top12Thousand-probable-v2.txt` | 100 KB |
-| md (default) | `Top95Thousand-probable.txt` | 822 KB |
-| lg | `Top304Thousand-probable-v2.txt` | 2.8 MB |
-| xl | `Top1pt6Million-probable-v2.txt` | 15.9 MB |
+```ruby
+PasswordBlacklist.blacklisted?('pokemon', :lg)
+```
 
-Note: The list size you select will impact memory footprint and processing time.
-Here is a comparison, for example, of the medium (default), and large lists:
+| list_size    | File name                        | File size |
+| ----         | ----                             | ----      |
+| xs           | `Top1575-probable-v2.txt`        | 12 KB     |
+| sm           | `Top12Thousand-probable-v2.txt`  | 100 KB    |
+| md (default) | `Top95Thousand-probable.txt`     | 822 KB    |
+| lg           | `Top304Thousand-probable-v2.txt` | 2.8 MB    |
+| xl           | `Top1pt6Million-probable-v2.txt` | 15.9 MB   |
 
-  ```
-  841.74 kB allocated on 95k wordlist # 'md' memory
-  2.83 MB allocated on 304k wordlist (~3.36x more) # 'lg' memory
-
-  2110.9 i/s on 95k wordlist # 'md' speed
-  613.7 i/s on 304 wordlist (~3.44x slower). # 'lg' speed
-  ```
+Note the list size you select will use more memory and linearly affect
+the processing time.
 
 ### Test multiple passwords
 
@@ -83,9 +75,19 @@ checker.blacklisted?("AccurateUnicornCoalPaperclip")
 => false
 ```
 
+You can also use a list size other than the default 'md' list
+
+```ruby
+checker = PasswordBlacklist::Checker.new(:xl)
+=> #<PasswordBlacklist::Checker:0x3ff979c41758>
+
+checker.blacklisted?("pokemon")
+=> true
+```
+
 ## Supported Ruby versions
 
-password_blacklist supports MRI Ruby 2.x. The specific Ruby versions we build and test on can be found at [TravisCI](https://travis-ci.org/gchan/password_blacklist).
+password_blacklist supports MRI Ruby 2.x and Ruby 3.x. The specific Ruby versions we build and test on can be found at [TravisCI](https://travis-ci.org/gchan/password_blacklist).
 
 ## Development
 
