@@ -1,5 +1,5 @@
 # password_blacklist
-[![Gem Version](https://badge.fury.io/rb/password_blacklist.svg)](http://badge.fury.io/rb/password_blacklist) [![Dependency Status](https://gemnasium.com/gchan/password_blacklist.svg?branch=main)](https://gemnasium.com/gchan/password_blacklist) ![License](https://img.shields.io/badge/license-MIT-blue.svg)
+[![Gem Version](https://badge.fury.io/rb/password_blacklist.svg)](http://badge.fury.io/rb/password_blacklist) ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 [![Ruby Tests on Github Actions](https://github.com/gchan/password_blacklist/actions/workflows/ruby.yml/badge.svg)](https://github.com/gchan/password_blacklist/actions/workflows/ruby.yml) [![Coverage Status](https://coveralls.io/repos/github/gchan/password_blacklist/badge.svg?branch=main)](https://coveralls.io/github/gchan/password_blacklist?branch=main) [![Code Climate](https://codeclimate.com/github/gchan/password_blacklist/badges/gpa.svg)](https://codeclimate.com/github/gchan/password_blacklist)
 
