@@ -1,5 +1,6 @@
-# coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
+# frozen_string_literal: true
+
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'password_blacklist/version'
 
@@ -17,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.license       = 'MIT'
 
   spec.files = Dir['lib/**/*.rb'] + Dir['data/*'] +
-               %w(password_blacklist.gemspec CHANGELOG.md LICENSE.txt README.md)
+               %w[password_blacklist.gemspec CHANGELOG.md LICENSE.txt README.md]
 
   spec.bindir        = 'bin'
   spec.require_paths = ['lib']
@@ -25,13 +26,13 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '>= 2.0'
 
-  spec.add_development_dependency 'bundler', ">= 2.2.10"
-  spec.add_development_dependency 'rake', ">= 12.3.3"
+  spec.add_development_dependency 'bundler', '>= 2.2.10'
+  spec.add_development_dependency 'rake', '>= 12.3.3'
 
-  spec.add_development_dependency 'rspec', '~> 3.11'
-  spec.add_development_dependency 'simplecov', '~> 0.21.2'
-  spec.add_development_dependency 'simplecov-lcov', '~> 0.8.0'
-  spec.add_development_dependency 'rubocop', '~> 0.49.1'
   spec.add_development_dependency 'benchmark-ips', '~> 2.10.0'
   spec.add_development_dependency 'memory_profiler', '~> 1.0.0'
+  spec.add_development_dependency 'rspec', '~> 3.11'
+  spec.add_development_dependency 'rubocop', '~> 1.26.1'
+  spec.add_development_dependency 'simplecov', '~> 0.21.2'
+  spec.add_development_dependency 'simplecov-lcov', '~> 0.8.0'
 end

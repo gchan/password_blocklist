@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require 'set'
 require 'bundler/setup'
@@ -35,11 +36,11 @@ Benchmark.ips do |x|
   x.warmup = 2
   x.time = 5
 
-  file_path = File.expand_path('../../data/Top95Thousand-probable.txt', __FILE__)
+  file_path = File.expand_path('../data/Top95Thousand-probable.txt', __dir__)
   blacklist = File.read(file_path)
 
   x.report('match') do
-    !!blacklist.match(Regexp.escape('AccurateUnicornCoalPaperclip'))
+    !blacklist.match(Regexp.escape('AccurateUnicornCoalPaperclip')).nil?
   end
 
   if ''.respond_to?(:match?)
@@ -65,7 +66,7 @@ Benchmark.ips do |x|
   x.warmup = 2
   x.time = 5
 
-  file_path = File.expand_path('../../data/Top95Thousand-probable.txt', __FILE__)
+  file_path = File.expand_path('../data/Top95Thousand-probable.txt', __dir__)
   blacklist = File.read(file_path)
   array     = blacklist.split("\n")
   set       = array.to_set
@@ -79,7 +80,7 @@ Benchmark.ips do |x|
   end
 
   x.report('Array#bsearch') do
-    !!array.bsearch { |password| 'AccurateUnicornCoalPaperclip' <=> password }
+    !array.bsearch { |password| 'AccurateUnicornCoalPaperclip' <=> password }.nil?
   end
 
   x.compare!
@@ -91,7 +92,7 @@ Benchmark.ips do |x|
   x.warmup = 2
   x.time = 5
 
-  file_path = File.expand_path('../../data/Top95Thousand-probable.txt', __FILE__)
+  file_path = File.expand_path('../data/Top95Thousand-probable.txt', __dir__)
   blacklist = File.read(file_path)
 
   x.report('String#downcase') do
@@ -99,7 +100,7 @@ Benchmark.ips do |x|
   end
 
   x.report('Regexp ignore case') do
-    blacklist.match /#{Regexp.escape('AccurateUnicornCoalPaperclip')}/i
+    blacklist.match(/#{Regexp.escape('AccurateUnicornCoalPaperclip')}/i)
   end
 
   x.compare!

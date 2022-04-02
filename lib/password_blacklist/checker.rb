@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PasswordBlacklist
   class Checker
     class UnknownListSizeError < StandardError; end
