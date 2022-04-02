@@ -83,7 +83,7 @@ checker.blocklisted?("pokemon")
 
 ## Supported Ruby versions
 
-password_blocklist supports MRI Ruby 2.5+ and Ruby 3.x. The specific Ruby versions we build and test on can be found on this Github Action [workflow file](https://github.com/gchan/password_blocklist/blob/main/.github/workflow/ruby.yml).
+password_blocklist supports MRI Ruby 2.5+ and Ruby 3.x. The specific Ruby versions we build and test on can be found on this Github Action [workflow file](https://github.com/gchan/password_blocklist/blob/main/.github/workflows/ruby.yml).
 
 ## Migrating to v0.5.0
 
